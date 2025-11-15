@@ -1,0 +1,227 @@
+<%- include("partials/header", { title: "Home" }) %>
+
+    <style>
+        /* HERO */
+        .hero-section {
+            background: linear-gradient(135deg, #4A90E2, #50C9C3);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 60px;
+        }
+
+        .hero-section h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+        }
+
+        /* CARDS */
+        .service-card,
+        .feature-card,
+        .pricing-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+            margin: 15px 0;
+            text-align: center;
+        }
+
+        .service-card:hover,
+        .feature-card:hover,
+        .pricing-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.15);
+        }
+
+        /* BUTTONS */
+        .pay-btn {
+            width: 100%;
+            padding: 12px;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .stripe-btn {
+            background: #6772e5;
+            color: white;
+        }
+
+        .stripe-btn:hover {
+            background: #5469d4;
+        }
+
+        .telebirr-btn {
+            background: #FDB913;
+            color: black;
+        }
+
+        .telebirr-btn:hover {
+            background: #e4a80f;
+        }
+
+        .translate-btn {
+            margin-top: 20px;
+            display: inline-block;
+            font-size: 1rem;
+            padding: 8px 14px;
+            border-radius: 6px;
+            background: #4A90E2;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .feature-icon {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: #4A90E2;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: #4A90E2;
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-top: 70px;
+            margin-bottom: 40px;
+        }
+
+        .cta-btn {
+            background: white;
+            color: #4A90E2;
+            padding: 12px 26px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .cta-btn:hover {
+            background: #e9e9e9;
+        }
+    </style>
+
+    <div class="container">
+
+        <!-- HERO SECTION -->
+        <div class="hero-section">
+            <h1>Welcome to Ferfam</h1>
+            <p>Your one-stop platform for home rental & family payment services.</p>
+        </div>
+
+        <!-- FEATURES SECTION -->
+        <div class="text-center mb-5">
+            <h2>Our Features</h2>
+            <p class="text-muted">Reliable, simple, and built for families everywhere.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">🏠</div>
+                    <h4>Easy House Rental</h4>
+                    <p>Find comfortable and affordable homes with your family’s needs in mind.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">🌍</div>
+                    <h4>Global Payments</h4>
+                    <p>Pay from anywhere using Stripe or Telebirr securely and instantly.</p>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h4>Secure Platform</h4>
+                    <p>Your data and payments are protected with encrypted technology.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- WHY CHOOSE US -->
+        <div class="text-center mt-5 mb-4">
+            <h2>Why Choose Ferfam?</h2>
+            <p class="text-muted">Trusted by families locally and globally.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="service-card">
+                    <h4>✔ Fast Approval</h4>
+                    <p>Homes are instantly approved for rental without long delays.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="service-card">
+                    <h4>✔ Transparent Pricing</h4>
+                    <p>No hidden charges. What you see is exactly what you pay.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- PRICING SECTION -->
+        <div class="text-center mt-5 mb-3">
+            <h2>Affordable Monthly Rent</h2>
+            <p class="text-muted">Simple pricing built to help families stay connected.</p>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="pricing-card">
+                    <h3 class="mb-3">Monthly Rent Plan</h3>
+
+                    <p class="mt-3" style="font-size: 1.3rem;">
+                        <strong style="color:#4A90E2;">$1960 USD / month</strong><br>
+                        <span class="text-muted" style="font-size: 1.1rem;">
+                            ETB <%= priceEtb %>
+                        </span>
+                    </p>
+
+                    <hr>
+
+                    <!-- Stripe -->
+                    <form action="/checkout/stripe" method="POST" class="mb-3">
+                        <button type="submit" class="pay-btn stripe-btn" style="font-size:1.1rem;">
+                            💳 Pay with Stripe (USD)
+                        </button>
+                    </form>
+
+                    <!-- Telebirr -->
+                    <form action="/checkout/telebirr" method="POST">
+                        <button type="submit" class="pay-btn telebirr-btn" style="font-size:1.1rem;">
+                            🇪🇹 Pay with Telebirr (ETB)
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- CTA SECTION -->
+        <div class="cta-section">
+            <h2>Ready to Get Started?</h2>
+            <p>Join thousands of families using Ferfam for secure payments and reliable rentals.</p>
+            <a href="/start-now" class="cta-btn">Start Now</a>
+        </div>
+
+        <!-- TRANSLATE SECTION -->
+        <div class="text-center mt-4">
+            <a href="/lang/am" class="translate-btn">
+                🌐 <%= __("translate") %>
+            </a>
+            <div id="google_translate_element" class="mt-3"></div>
+        </div>
+
+        <%- include("partials/footer") %>

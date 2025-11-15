@@ -1,0 +1,137 @@
+<%- include("partials/header", { title: "Booking" }) %>
+
+    <style>
+        .booking-hero {
+            background: linear-gradient(135deg, #4A90E2, #50C9C3);
+            color: white;
+            padding: 70px 20px;
+            text-align: center;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+
+        .booking-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        .booking-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .booking-form {
+            background: #fff;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .booking-form .form-label {
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .booking-form .form-control {
+            margin-bottom: 18px;
+            padding: 12px 14px;
+            border-radius: 10px;
+        }
+
+        .summary-card {
+            background: #4A90E2;
+            color: white;
+            padding: 25px;
+            margin-top: 25px;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .summary-card h3 {
+            margin-bottom: 15px;
+        }
+
+        .payment-btn {
+            width: 100%;
+            background: #fff;
+            color: #4A90E2;
+            padding: 12px 20px;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            border: none;
+            font-weight: 700;
+            margin-top: 12px;
+            transition: .3s;
+        }
+
+        .payment-btn:hover {
+            background: #e8e8e8;
+        }
+    </style>
+
+    <div class="container booking-container">
+
+        <!-- HERO -->
+        <div class="booking-hero">
+            <h1>Book Your Stay</h1>
+            <p>Enter your details below to complete your reservation.</p>
+        </div>
+
+        <!-- BOOKING FORM -->
+        <div class="booking-form">
+
+            <form action="/booking/submit" method="POST">
+
+                <!-- Name -->
+                <label class="form-label">Full Name</label>
+                <input type="text" name="name" class="form-control" required>
+
+                <!-- Email -->
+                <label class="form-label">Email Address</label>
+                <input type="email" name="email" class="form-control" required>
+
+                <!-- Phone -->
+                <label class="form-label">Phone Number</label>
+                <input type="text" name="phone" class="form-control" required>
+
+                <!-- Move-in Date -->
+                <label class="form-label">Move-in Date</label>
+                <input type="date" name="date" class="form-control" required>
+
+                <!-- Number of Guests -->
+                <label class="form-label">Number of Guests</label>
+                <input type="number" name="guests" class="form-control" min="1" required>
+
+                <!-- Notes -->
+                <label class="form-label">Additional Notes (Optional)</label>
+                <textarea name="notes" class="form-control" rows="4"></textarea>
+
+                <!-- SUMMARY BOX -->
+                <div class="summary-card">
+                    <h3>Your Reservation Summary</h3>
+
+                    <p><strong>Home:</strong> Beautiful Family House</p>
+
+                    <p><strong>Price:</strong> $17 / day</p>
+
+                    <p><strong>Price (ETB):</strong>
+                        <%= Math.round(17 * 155) %> ETB /day
+                    </p>
+
+                    <p style="margin-top: 15px;">
+                        By clicking "Proceed to Payment", you will be directed to the secure checkout page.
+                    </p>
+
+                    <button type="submit" class="payment-btn">
+                        Proceed to Payment →
+                    </button>
+                </div>
+
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <%- include("partials/footer") %>

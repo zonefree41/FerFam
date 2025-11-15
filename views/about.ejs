@@ -1,0 +1,139 @@
+<%- include("partials/header", { title: "About Us" }) %>
+
+    <style>
+        .about-hero {
+            background: linear-gradient(135deg, #4A90E2, #50C9C3);
+            color: white;
+            padding: 70px 20px;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        .about-hero h1 {
+            font-size: 2.7rem;
+            font-weight: 700;
+        }
+
+        .section-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .info-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+            margin-bottom: 25px;
+            transition: 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.13);
+        }
+
+        .step-icon {
+            font-size: 2.4rem;
+            color: #4A90E2;
+            margin-bottom: 10px;
+        }
+
+        .cta-box {
+            background: #4A90E2;
+            color: white;
+            padding: 40px 20px;
+            border-radius: 12px;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .cta-btn {
+            background: white;
+            color: #4A90E2;
+            padding: 12px 26px;
+            font-size: 1.2rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .cta-btn:hover {
+            background: #e9e9e9;
+        }
+    </style>
+
+    <div class="container">
+
+        <!-- HERO -->
+        <div class="about-hero">
+            <h1>About Ferfam Rentals</h1>
+            <p>Your trusted partner for reliable and affordable home rentals.</p>
+        </div>
+
+        <!-- MISSION -->
+        <div class="text-center mb-5">
+            <h2 class="section-title">Our Mission</h2>
+            <p class="text-muted" style="max-width: 700px; margin: auto;">
+                At Ferfam, our mission is to make renting a home simple, transparent, and secure.
+                We help families and individuals find comfortable homes at fair prices while ensuring
+                a smooth and stress-free rental experience from start to finish.
+            </p>
+        </div>
+
+        <!-- RENTAL PROCESS -->
+        <div class="mb-4">
+            <h2 class="section-title text-center mb-4">How Our Rental Process Works</h2>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="info-card text-center">
+                        <div class="step-icon">🔍</div>
+                        <h4>1. Explore Homes</h4>
+                        <p>Browse through our available rental options and choose the home that fits
+                            your needs, whether it’s a family house, apartment, or private rental space.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="info-card text-center">
+                        <div class="step-icon">💼</div>
+                        <h4>2. Submit Your Info</h4>
+                        <p>Provide basic renter information so we can process your application smoothly.
+                            Your details are kept private and secure at all times.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="info-card text-center">
+                        <div class="step-icon">🏡</div>
+                        <h4>3. Move Into Your Home</h4>
+                        <p>Once approved, you’re all set! You’ll receive full move-in details and ongoing
+                            support from our team whenever you need help.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BENEFITS -->
+        <div class="text-center mt-5 mb-4">
+            <h2 class="section-title">Why Rent With Ferfam?</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="info-card">
+                    <h4>✔ Affordable & Fair Pricing</h4>
+                    <p>No hidden fees. No surprises. You always know exactly what you're paying for.</p>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="info-card">
+                    <h4>✔ Safe & Secure Payments</h4>
+                    <p>Your payment information is protected with industry-leading security measures.
+                        Rent with peace of mind knowing your data is safe.</p>
+                </div>
+            </div>

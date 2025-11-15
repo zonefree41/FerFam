@@ -1,0 +1,108 @@
+<%- include("partials/header", { title: "Start Now" }) %>
+
+    <style>
+        .start-hero {
+            background: linear-gradient(135deg, #4A90E2, #50C9C3);
+            color: white;
+            padding: 90px 20px;
+            text-align: center;
+            border-radius: 16px;
+            margin-bottom: 40px;
+        }
+
+        .start-hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+        }
+
+        .start-hero p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            opacity: 0.95;
+        }
+
+        .start-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+            text-align: center;
+            margin-bottom: 25px;
+            transition: .3s;
+        }
+
+        .start-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .start-btn {
+            display: inline-block;
+            background: #4A90E2;
+            color: white;
+            padding: 12px 22px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .start-btn:hover {
+            background: #3a7acc;
+        }
+    </style>
+
+    <div class="container">
+
+        <!-- HERO -->
+        <div class="start-hero">
+            <h1>Start Your Ferfam Experience</h1>
+            <p>Your next home, service, and payment solutions — all in one place.</p>
+        </div>
+
+        <!-- OPTIONS -->
+        <div class="row">
+
+            <!-- Book a Place -->
+            <div class="col-md-4">
+                <div class="start-card">
+                    <h2>Book Your Stay</h2>
+                    <p>Find the perfect rental home and secure your booking quickly.</p>
+                    <a href="/booking" class="start-btn">Start Booking</a>
+                </div>
+            </div>
+
+            <!-- House Tour -->
+            <div class="col-md-4">
+                <div class="start-card">
+                    <h2>House Tour</h2>
+                    <p>Watch videos, explore the rooms, and take a closer look.</p>
+                    <a href="/housetour" class="start-btn">View House Tour</a>
+                </div>
+            </div>
+
+            <!-- Pricing -->
+            <div class="col-md-4">
+                <div class="start-card">
+                    <h2>Pricing & Payments</h2>
+                    <p>See plans, choose monthly rent, and pay securely.</p>
+                    <a href="/" class="start-btn">View Pricing</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Contact -->
+        <div class="row mt-4">
+            <div class="col-md-12">
+                <div class="start-card">
+                    <h2>Have Questions?</h2>
+                    <p>We’re ready to help you every step of the way.</p>
+                    <a href="/contact" class="start-btn">Contact Us</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <%- include("partials/footer") %>
