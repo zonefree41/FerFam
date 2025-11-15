@@ -83,10 +83,21 @@ app.get("/lang/:locale", (req, res) => {
 
     app.get("/booking", (req, res) => {
         res.render("booking", {
-            priceUsd: 100,
-            priceEtb: 5500
+            priceUsd: 17,
+            priceEtb: Math.round(17 * 155)
         });
     });
+
+    app.post("/booking/submit", (req, res) => {
+        const { name, email, phone, date, guests, notes } = req.body;
+
+        console.log("Booking Submitted:", req.body);
+
+        // For now: redirect to Stripe payment
+        res.redirect("/checkout/stripe");
+    });
+
+
 
     app.get("/checkout/stripe", (req, res) => {
         res.redirect("/");
@@ -96,11 +107,13 @@ app.get("/lang/:locale", (req, res) => {
     app.post("/booking/submit", (req, res) => {
         const { name, email, phone, date, guests, notes } = req.body;
 
-        // Store or email booking details if needed
+        console.log("Booking Received:", req.body);
 
-        // Redirect to Stripe or a payment options page
-        res.redirect(307, "/checkout/stripe");
+        // Redirect to payment
+        res.redirect("/checkout/stripe");
     });
+
+
 
 
     // ✅ Redirect back to previous page or to home if none
