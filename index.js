@@ -70,7 +70,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/start-now", (req, res) => {
-    res.render("start now");
+    res.render("start-now");
 });
 
 
