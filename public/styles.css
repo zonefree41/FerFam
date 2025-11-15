@@ -36,14 +36,14 @@ footer {
 
 /* Buttons */
 button {
-    background: yellow;
+    background: aqua;
     border: none;
     color: white;
     padding: 10px 20px;
     border-radius: 6px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 10px;
+    margin-top: 5px;
 }
 
 button:hover {
