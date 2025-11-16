@@ -65,17 +65,6 @@
             background: #e4a80f;
         }
 
-        .translate-btn {
-            margin-top: 20px;
-            display: inline-block;
-            font-size: 1rem;
-            padding: 8px 14px;
-            border-radius: 6px;
-            background: #4A90E2;
-            color: #fff;
-            text-decoration: none;
-        }
-
         .feature-icon {
             font-size: 2.8rem;
             margin-bottom: 15px;
@@ -106,6 +95,17 @@
 
         .cta-btn:hover {
             background: #e9e9e9;
+        }
+
+        .translate-btn {
+            margin-top: 20px;
+            display: inline-block;
+            font-size: 1rem;
+            padding: 8px 14px;
+            border-radius: 6px;
+            background: #4A90E2;
+            color: #fff;
+            text-decoration: none;
         }
     </style>
 
@@ -205,8 +205,81 @@
                         </button>
                     </form>
                 </div>
-
             </div>
+        </div>
+
+        <!-- 🌟 SPLIT PAYMENT SECTION -->
+        <div class="text-center mt-5 mb-3">
+            <h2>Split Rent Payment</h2>
+            <p class="text-muted">Husband and wife can securely pay their portion separately.</p>
+        </div>
+
+        <div class="row justify-content-center">
+
+            <!-- Wife -->
+            <div class="col-md-5">
+                <div class="pricing-card">
+                    <h3 class="mb-3">Wife – Ferwoine Asg</h3>
+
+                    <p class="mt-3" style="font-size:1.3rem;">
+                        <strong style="color:#4A90E2;">$980 USD</strong><br>
+                        <span class="text-muted" style="font-size:1.1rem;">
+                            ETB 150,000
+                        </span>
+                    </p>
+
+                    <hr>
+
+                    <form action="/checkout/stripe" method="POST" class="mb-3">
+                        <input type="hidden" name="payer" value="Ferwoine Asg">
+                        <input type="hidden" name="amount" value="980">
+                        <button type="submit" class="pay-btn stripe-btn">
+                            💳 Pay Ferwoine's Share (USD)
+                        </button>
+                    </form>
+
+                    <form action="/checkout/telebirr" method="POST">
+                        <input type="hidden" name="payer" value="Ferwoine Asg">
+                        <input type="hidden" name="amount" value="150000">
+                        <button type="submit" class="pay-btn telebirr-btn">
+                            🇪🇹 Pay with Telebirr (ETB)
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Husband -->
+            <div class="col-md-5">
+                <div class="pricing-card">
+                    <h3 class="mb-3">Husband – Sirak Niguse</h3>
+
+                    <p class="mt-3" style="font-size:1.3rem;">
+                        <strong style="color:#4A90E2;">$980 USD</strong><br>
+                        <span class="text-muted" style="font-size:1.1rem;">
+                            ETB 150,000
+                        </span>
+                    </p>
+
+                    <hr>
+
+                    <form action="/checkout/stripe" method="POST" class="mb-3">
+                        <input type="hidden" name="payer" value="Sirak Niguse">
+                        <input type="hidden" name="amount" value="980">
+                        <button type="submit" class="pay-btn stripe-btn">
+                            💳 Pay Sirak's Share (USD)
+                        </button>
+                    </form>
+
+                    <form action="/checkout/telebirr" method="POST">
+                        <input type="hidden" name="payer" value="Sirak Niguse">
+                        <input type="hidden" name="amount" value="150000">
+                        <button type="submit" class="pay-btn telebirr-btn">
+                            🇪🇹 Pay with Telebirr (ETB)
+                        </button>
+                    </form>
+                </div>
+            </div>
+
         </div>
 
         <!-- CTA SECTION -->
@@ -218,10 +291,10 @@
 
         <!-- TRANSLATE SECTION -->
         <div class="text-center mt-4">
-            <a href="/lang/am" class="translate-btn">
-                🌐 <%= __("translate") %>
-            </a>
+            <a href="/lang/am" class="translate-btn">🌐 <%= __("translate") %></a>
             <div id="google_translate_element" class="mt-3"></div>
         </div>
 
-        <%- include("partials/footer") %>
+    </div>
+
+    <%- include("partials/footer") %>
