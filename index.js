@@ -112,7 +112,7 @@ app.post("/checkout/stripe", async (req, res) => {
                     price_data: {
                         currency: "usd",
                         product_data: { name: "Ferfam Rental Booking" },
-                        unit_amount: 1700, // $17/day
+                        unit_amount: 980 * 100, // $980/month
                     },
                     quantity: 1,
                 },
