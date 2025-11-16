@@ -97,13 +97,26 @@ app.get("/booking", (req, res) => {
 });
 
 app.post("/booking/submit", (req, res) => {
-    console.log("Booking Submitted:", req.body);
-    // Continue to payment
-    res.redirect(307, "/checkout/stripe");
+    const { name, amount } = req.body;
+
+    // Set payer as the person booking
+    const payer = name || "Booking Customer";
+
+    // Redirect to stripe WITH amount & payer
+    res.redirect(307, `/checkout/stripe?amount=${amount}&payer=${encodeURIComponent(payer)}`);
 });
 
-// =============== STRIPE CHECKOUT ===============
+
+// 💳 UNIVERSAL STRIPE PAYMENT ROUTE (DYNAMIC)
 app.post("/checkout/stripe", async (req, res) => {
+
+    const amount = Number(req.body.amount || req.query.amount);
+    const payer = req.body.payer || req.query.payer || "Ferfam Customer";
+
+    if (!amount || isNaN(amount)) {
+        return res.status(400).send("Payment amount missing or invalid.");
+    }
+
     try {
         const session = await stripe.checkout.sessions.create({
             payment_method_types: ["card"],
@@ -111,8 +124,8 @@ app.post("/checkout/stripe", async (req, res) => {
                 {
                     price_data: {
                         currency: "usd",
-                        product_data: { name: "Ferfam Rental Booking" },
-                        unit_amount: 980 * 100, // $980/month
+                        product_data: { name: `Rent Payment – ${payer}` },
+                        unit_amount: Math.round(amount * 100),
                     },
                     quantity: 1,
                 },
@@ -128,6 +141,9 @@ app.post("/checkout/stripe", async (req, res) => {
         res.status(500).send("Stripe Checkout Error: " + err.message);
     }
 });
+
+
+
 
 // =============== TELEBIRR PAYMENT ===============
 app.post("/checkout/telebirr", async (req, res) => {

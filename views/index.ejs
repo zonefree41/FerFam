@@ -171,7 +171,7 @@
             </div>
         </div>
 
-        <!-- PRICING SECTION -->
+        <!-- MONTHLY PAYMENT SECTION -->
         <div class="text-center mt-5 mb-3">
             <h2>Affordable Monthly Rent</h2>
             <p class="text-muted">Simple pricing built to help families stay connected.</p>
@@ -193,107 +193,127 @@
 
                     <!-- Stripe -->
                     <form action="/checkout/stripe" method="POST" class="mb-3">
+                        <input type="hidden" name="amount" value="1960">
                         <button type="submit" class="pay-btn stripe-btn" style="font-size:1.1rem;">
-                            💳 Pay with Stripe (USD)
+                            💳 Pay $1960 with Stripe (USD)
                         </button>
                     </form>
 
                     <!-- Telebirr -->
                     <form action="/checkout/telebirr" method="POST">
+                        <input type="hidden" name="amount" value="<%= priceEtb %>">
                         <button type="submit" class="pay-btn telebirr-btn" style="font-size:1.1rem;">
-                            🇪🇹 Pay with Telebirr (ETB)
+                            🇪🇹 Pay ETB <%= priceEtb %> with Telebirr
                         </button>
                     </form>
                 </div>
             </div>
         </div>
 
-        <!-- 🌟 SPLIT PAYMENT SECTION -->
-        <div class="text-center mt-5 mb-3">
-            <h2>Split Rent Payment</h2>
-            <p class="text-muted">Husband and wife can securely pay their portion separately.</p>
-        </div>
 
-        <div class="row justify-content-center">
+        <!-- Stripe -->
+        <form action="/checkout/stripe" method="POST" class="mb-3">
+            <button type="submit" class="pay-btn stripe-btn" style="font-size:1.1rem;">
+                💳 Pay with Stripe (USD)
+            </button>
+        </form>
 
-            <!-- Wife -->
-            <div class="col-md-5">
-                <div class="pricing-card">
-                    <h3 class="mb-3">Wife – Ferwoine Asg</h3>
+        <!-- Telebirr -->
+        <form action="/checkout/telebirr" method="POST">
+            <button type="submit" class="pay-btn telebirr-btn" style="font-size:1.1rem;">
+                🇪🇹 Pay with Telebirr (ETB)
+            </button>
+        </form>
+    </div>
+    </div>
+    </div>
 
-                    <p class="mt-3" style="font-size:1.3rem;">
-                        <strong style="color:#4A90E2;">$980 USD</strong><br>
-                        <span class="text-muted" style="font-size:1.1rem;">
-                            ETB 150,000
-                        </span>
-                    </p>
+    <!-- 🌟 SPLIT PAYMENT SECTION -->
+    <div class="text-center mt-5 mb-3">
+        <h2>Split Rent Payment</h2>
+        <p class="text-muted">Husband and wife can securely pay their portion separately.</p>
+    </div>
 
-                    <hr>
+    <div class="row justify-content-center">
 
-                    <form action="/checkout/stripe" method="POST" class="mb-3">
-                        <input type="hidden" name="payer" value="Ferwoine Asg">
-                        <input type="hidden" name="amount" value="980">
-                        <button type="submit" class="pay-btn stripe-btn">
-                            💳 Pay Ferwoine's Share (USD)
-                        </button>
-                    </form>
+        <!-- Wife -->
+        <div class="col-md-5">
+            <div class="pricing-card">
+                <h3 class="mb-3">Wife – Ferwoine Asg</h3>
 
-                    <form action="/checkout/telebirr" method="POST">
-                        <input type="hidden" name="payer" value="Ferwoine Asg">
-                        <input type="hidden" name="amount" value="150000">
-                        <button type="submit" class="pay-btn telebirr-btn">
-                            🇪🇹 Pay with Telebirr (ETB)
-                        </button>
-                    </form>
-                </div>
+                <p class="mt-3" style="font-size:1.3rem;">
+                    <strong style="color:#4A90E2;">$980 USD</strong><br>
+                    <span class="text-muted" style="font-size:1.1rem;">
+                        ETB 150,000
+                    </span>
+                </p>
+
+                <hr>
+
+                <form action="/checkout/stripe" method="POST" class="mb-3">
+                    <input type="hidden" name="payer" value="Ferwoine Asg">
+                    <input type="hidden" name="amount" value="980">
+                    <button type="submit" class="pay-btn stripe-btn">
+                        💳 Pay Ferwoine's Share (USD)
+                    </button>
+                </form>
+
+                <form action="/checkout/telebirr" method="POST">
+                    <input type="hidden" name="payer" value="Ferwoine Asg">
+                    <input type="hidden" name="amount" value="150000">
+                    <button type="submit" class="pay-btn telebirr-btn">
+                        🇪🇹 Pay with Telebirr (ETB)
+                    </button>
+                </form>
             </div>
+        </div>
 
-            <!-- Husband -->
-            <div class="col-md-5">
-                <div class="pricing-card">
-                    <h3 class="mb-3">Husband – Sirak Niguse</h3>
+        <!-- Husband -->
+        <div class="col-md-5">
+            <div class="pricing-card">
+                <h3 class="mb-3">Husband – Sirak Niguse</h3>
 
-                    <p class="mt-3" style="font-size:1.3rem;">
-                        <strong style="color:#4A90E2;">$980 USD</strong><br>
-                        <span class="text-muted" style="font-size:1.1rem;">
-                            ETB 150,000
-                        </span>
-                    </p>
+                <p class="mt-3" style="font-size:1.3rem;">
+                    <strong style="color:#4A90E2;">$980 USD</strong><br>
+                    <span class="text-muted" style="font-size:1.1rem;">
+                        ETB 150,000
+                    </span>
+                </p>
 
-                    <hr>
+                <hr>
 
-                    <form action="/checkout/stripe" method="POST" class="mb-3">
-                        <input type="hidden" name="payer" value="Sirak Niguse">
-                        <input type="hidden" name="amount" value="980">
-                        <button type="submit" class="pay-btn stripe-btn">
-                            💳 Pay Sirak's Share (USD)
-                        </button>
-                    </form>
+                <form action="/checkout/stripe" method="POST" class="mb-3">
+                    <input type="hidden" name="payer" value="Sirak Niguse">
+                    <input type="hidden" name="amount" value="980">
+                    <button type="submit" class="pay-btn stripe-btn">
+                        💳 Pay Sirak's Share (USD)
+                    </button>
+                </form>
 
-                    <form action="/checkout/telebirr" method="POST">
-                        <input type="hidden" name="payer" value="Sirak Niguse">
-                        <input type="hidden" name="amount" value="150000">
-                        <button type="submit" class="pay-btn telebirr-btn">
-                            🇪🇹 Pay with Telebirr (ETB)
-                        </button>
-                    </form>
-                </div>
+                <form action="/checkout/telebirr" method="POST">
+                    <input type="hidden" name="payer" value="Sirak Niguse">
+                    <input type="hidden" name="amount" value="150000">
+                    <button type="submit" class="pay-btn telebirr-btn">
+                        🇪🇹 Pay with Telebirr (ETB)
+                    </button>
+                </form>
             </div>
-
         </div>
 
-        <!-- CTA SECTION -->
-        <div class="cta-section">
-            <h2>Ready to Get Started?</h2>
-            <p>Join thousands of families using Ferfam for secure payments and reliable rentals.</p>
-            <a href="/start-now" class="cta-btn">Start-Now</a>
-        </div>
+    </div>
 
-        <!-- TRANSLATE SECTION -->
-        <div class="text-center mt-4">
-            <a href="/lang/am" class="translate-btn">🌐 <%= __("translate") %></a>
-            <div id="google_translate_element" class="mt-3"></div>
-        </div>
+    <!-- CTA SECTION -->
+    <div class="cta-section">
+        <h2>Ready to Get Started?</h2>
+        <p>Join thousands of families using Ferfam for secure payments and reliable rentals.</p>
+        <a href="/start-now" class="cta-btn">Start-Now</a>
+    </div>
+
+    <!-- TRANSLATE SECTION -->
+    <div class="text-center mt-4">
+        <a href="/lang/am" class="translate-btn">🌐 <%= __("translate") %></a>
+        <div id="google_translate_element" class="mt-3"></div>
+    </div>
 
     </div>
 

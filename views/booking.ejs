@@ -120,10 +120,11 @@
                     <p style="margin-top: 15px;">
                         By clicking "Proceed to Payment", you will be directed to the secure checkout page.
                     </p>
-
-                    <button type="submit" class="payment-btn">
-                        Proceed to Payment →
-                    </button>
+                    <form action="/booking/submit" method="POST">
+                        <input type="hidden" name="amount" value="17">
+                        <button type="submit" class="payment-btn">
+                            Proceed to Payment →
+                        </button>
                 </div>
 
 
