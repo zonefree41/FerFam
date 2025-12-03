@@ -137,7 +137,7 @@ app.get("/start-now", (req, res) => res.render("start-now"));
 
 app.get("/housetour", (req, res) => {
     res.render("house-tour", {
-        priceUsd: 903,
+        priceUsd: 903 * 100,        
         priceEtb: Math.round(903 * 155),
     });
 });

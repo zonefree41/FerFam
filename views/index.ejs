@@ -235,14 +235,14 @@
 
                     <!-- Stripe Payment -->
                     <form action="/checkout/stripe" method="POST" class="mb-3">
-                        <!-- ❗ Update this to the real monthly charge (e.g., 903 * 100 = 90300 cents) -->
-                        <input type="hidden" name="amount" value="90300">
+                        <input type="hidden" name="amount" value="903"> <!-- FIXED -->
                         <input type="hidden" name="payer" value="Ferwoine Asg">
 
                         <button type="submit" class="pay-btn stripe-btn">
                             💳 Pay with Stripe (USD)
                         </button>
                     </form>
+
 
                     <!-- Telebirr Payment -->
                     <form action="/checkout/telebirr" method="POST">
