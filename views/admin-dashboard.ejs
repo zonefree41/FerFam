@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard | Ferfam</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: #f4f8fb;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            width: 260px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background: linear-gradient(135deg, #4A90E2, #50C9C3);
+            padding: 25px;
+            color: white;
+        }
+
+        .sidebar h2 {
+            margin-top: 0;
+            text-align: center;
+            font-weight: 800;
+            font-size: 1.8rem;
+        }
+
+        .menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px 15px;
+            margin: 8px 0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: 0.3s;
+        }
+
+        .menu a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* MAIN CONTENT */
+        .main {
+            margin-left: 260px;
+            padding: 40px;
+        }
+
+        .header-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #4A90E2;
+        }
+
+        /* DASHBOARD CARDS */
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .card {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            font-size: 1.4rem;
+        }
+
+        .value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4A90E2;
+        }
+
+        /* LOGOUT BUTTON */
+        .logout-btn {
+            margin-top: 40px;
+            padding: 12px 20px;
+            background: #fff;
+            color: #4A90E2;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .logout-btn:hover {
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>F e r f a m</h2>
+
+        <div class="menu">
+            <a href="/admin/dashboard">🏠 Dashboard</a>
+            <a href="/admin/bookings">📘 Bookings</a>
+            <a href="/admin/payments">💳 Payments</a>
+            <a href="/admin/rent">🏡 Rent Settings</a>
+            <a href="/admin/split-payments">👥 Split Payments</a>
+            <a href="/admin/customers">🧑‍💼 Customers</a>
+            <a href="/admin/settings">⚙️ Settings</a>
+            <a href="/admin/logout" style="margin-top:40px;">🚪 Logout</a>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main">
+        <h1 class="header-title">Welcome Back, Admin 👋</h1>
+        <p style="color:#666;">Here's the latest overview of your platform.</p>
+
+        <div class="cards">
+            <div class="card">
+                <h3>Total Bookings</h3>
+                <div class="value">12</div>
+            </div>
+
+            <div class="card">
+                <h3>Total Payments</h3>
+                <div class="value">$7,480</div>
+            </div>
+
+            <div class="card">
+                <h3>Active Renters</h3>
+                <div class="value">4</div>
+            </div>
+
+            <div class="card">
+                <h3>Pending Requests</h3>
+                <div class="value">3</div>
+            </div>
+        </div>
+
+        <a href="/admin/logout" class="logout-btn">Logout</a>
+    </div>
+
+</body>
+
+</html>
