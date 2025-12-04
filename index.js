@@ -32,6 +32,23 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
+// =======================================
+//        GLOBAL CSP + CHROME FIX
+// =======================================
+app.use((req, res, next) => {
+    res.setHeader(
+        "Content-Security-Policy",
+        "default-src 'self' data: blob: 'unsafe-inline' 'unsafe-eval' https://js.stripe.com https://fonts.googleapis.com https://fonts.gstatic.com;"
+    );
+    next();
+});
+
+// Fix Chrome DevTools warning + prevent 404 errors
+app.get("/.well-known/appspecific/com.chrome.devtools.json", (req, res) => {
+    res.setHeader("Content-Type", "application/json");
+    res.status(200).send("{}");
+});
+
 // Sessions for admin authentication
 app.use(
     session({
@@ -66,15 +83,8 @@ app.use((req, res, next) => {
 app.get("/", (req, res) => {
     res.render("index", {
         priceUsd: 903,
-        priceEtb: Math.round(903 * 155), // Adjust ETB rate here
+        priceEtb: Math.round(903 * 155),
     });
-});
-
-// =======================================
-//         FIX CHROME CSP WARNING
-// =======================================
-app.get("/.well-known/appspecific/com.chrome.devtools.json", (req, res) => {
-    res.status(204).send(); // Silences Chrome request
 });
 
 // =======================================
@@ -86,23 +96,18 @@ app.get("/lang/:locale", (req, res) => {
     res.redirect(req.get("Referer") || "/");
 });
 
-
 // =======================================
 //               ADMIN SYSTEM
 // =======================================
-
-// Middleware to protect admin routes
 function requireAdmin(req, res, next) {
     if (!req.session.admin) return res.redirect("/admin/login");
     next();
 }
 
-// Admin login page
 app.get("/admin/login", (req, res) => {
     res.render("admin-login", { error: null });
 });
 
-// Admin authentication
 app.post("/admin/login", (req, res) => {
     const { email, password } = req.body;
 
@@ -114,12 +119,10 @@ app.post("/admin/login", (req, res) => {
     res.render("admin-login", { error: "Invalid email or password" });
 });
 
-// Admin Dashboard
 app.get("/admin/dashboard", requireAdmin, (req, res) => {
     res.render("admin-dashboard");
 });
 
-// Admin Logout
 app.get("/admin/logout", requireAdmin, (req, res) => {
     req.session.destroy(() => res.redirect("/admin/login"));
 });
@@ -127,17 +130,13 @@ app.get("/admin/logout", requireAdmin, (req, res) => {
 // =======================================
 //              PUBLIC ROUTES
 // =======================================
-// (Home is already defined above, do not duplicate)
-
-
-
 app.get("/about", (req, res) => res.render("about"));
 app.get("/contact", (req, res) => res.render("contact"));
 app.get("/start-now", (req, res) => res.render("start-now"));
 
 app.get("/housetour", (req, res) => {
     res.render("house-tour", {
-        priceUsd: 903 * 100,        
+        priceUsd: 903,
         priceEtb: Math.round(903 * 155),
     });
 });
@@ -154,10 +153,8 @@ app.get("/booking", (req, res) => {
 
 app.post("/booking/submit", (req, res) => {
     const { name, amount } = req.body;
-
     const payer = name || "Ferwoine Asg";
 
-    // Forward to Stripe dynamic route
     res.redirect(307, `/checkout/stripe?amount=${amount}&payer=${encodeURIComponent(payer)}`);
 });
 
@@ -199,7 +196,7 @@ app.post("/checkout/stripe", async (req, res) => {
 });
 
 // =======================================
-//             TELEBIRR (COMING SOON)
+//             TELEBIRR
 // =======================================
 app.post("/checkout/telebirr", (req, res) => {
     res.send("Telebirr integration is coming soon.");
